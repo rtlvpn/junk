@@ -1,0 +1,174 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only", // 若两端准备好了IPv6，可改为 "prefer_ipv6" 
+        "detour": "proxy"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only", // 若两端准备好了IPv6，可改为 "prefer_ipv6" 
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_block",
+        "address": "rcode://refused"
+      },
+      {
+        "tag": "dns_fakeip",
+        "address": "fakeip",
+        "strategy": "ipv4_only"
+      },
+      {
+        "tag": "dns_resolver",
+        "address": "1.1.1.1",
+        "strategy": "ipv4_only",
+        "detour": "direct"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": [
+          "any"
+        ],
+        "server": "dns_resolver"
+      },
+      {
+        "geosite": [
+          "category-ads-all"
+        ],
+        "server": "dns_block",
+        "disable_cache": true
+      },
+      {
+        "geosite": [
+          "geolocation-!cn"
+        ],
+        "query_type": [
+          "A",
+          "AAAA",
+          "HTTPS"
+        ],
+        "server": "dns_fakeip"
+      }
+    ],
+    "final": "dns_fakeip",
+    "independent_cache": true,
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    }
+  },
+  "route": {
+    "geoip": {
+      "download_url": "https://github.com/soffchen/sing-geoip/releases/latest/download/geoip.db",
+      "download_detour": "proxy"
+    },
+    "geosite": {
+      "download_url": "https://github.com/soffchen/sing-geosite/releases/latest/download/geosite.db",
+      "download_detour": "proxy"
+    },
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "geosite": [
+          "geolocation-!cn"
+        ],
+        "outbound": "proxy"
+      },
+      {
+        "geosite": [
+          "private"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "geoip": [
+          "cn",
+          "private"
+        ],
+        "outbound": "direct"
+      }
+    ],
+    "final": "proxy",
+    "auto_detect_interface": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "inet4_address": "172.19.0.1/30",
+      "inet6_address": "fdfe:dcba:9876::1/126",
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "mixed",
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ],
+  "outbounds": [
+    {
+      // 粘贴你的客户端配置，需要保留 "tag": "proxy" 
+      "tag": "proxy",
+      "type": "vless",
+      "server": "172.93.144.139",
+      "server_port": 443, //change to your server port 
+      "uuid": "64054622-4ed6-4595-8768-9191177da40b",
+      "tls": {
+        "enabled": true,
+        "server_name": "siemens.com", // target domain client must match with server setting 
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "fTlf2tlB0GWoyxHC6AtNhOAKWWO8cVRMml-32LGcoBM", // change to public key of your account 
+          "short_id": "0ae63ceb" // change to short id of your account 
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "http"
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "ntp": {
+    "enabled": true,
+    "server": "time.apple.com",
+    "server_port": 123,
+    "interval": "30m",
+    "detour": "direct"
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "store_fakeip": true
+    }
+  }
+}
