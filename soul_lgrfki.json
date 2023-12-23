@@ -9,14 +9,14 @@
         "tag": "dns_proxy",
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_resolver",
-        "strategy": "ipv4_only", 
+        "strategy": "ipv4_only", // 若两端准备好了IPv6，可改为 "prefer_ipv6" 
         "detour": "proxy"
       },
       {
         "tag": "dns_direct",
         "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns_resolver",
-        "strategy": "ipv4_only",
+        "strategy": "ipv4_only", // 若两端准备好了IPv6，可改为 "prefer_ipv6" 
         "detour": "direct"
       },
       {
@@ -30,7 +30,7 @@
       },
       {
         "tag": "dns_resolver",
-        "address": "1.1.1.1",
+        "address": "9.9.9.9",
         "strategy": "ipv4_only",
         "detour": "direct"
       }
@@ -55,8 +55,7 @@
         ],
         "query_type": [
           "A",
-          "AAAA",
-          "HTTPS"
+          "AAAA"
         ],
         "server": "dns_fakeip"
       }
@@ -114,29 +113,30 @@
       "inet6_address": "fdfe:dcba:9876::1/126",
       "auto_route": true,
       "strict_route": true,
-      "stack": "mixed",
+      "stack": "gvisor",
       "sniff": true,
       "sniff_override_destination": false
     }
   ],
   "outbounds": [
     {
+      // 粘贴你的客户端配置，需要保留 "tag": "proxy" 
       "tag": "proxy",
       "type": "vless",
       "server": "172.93.144.139",
-      "server_port": 443, 
-      "uuid": "7f03f01a-a0ea-4905-87f2-3ca892eb259b",
+      "server_port": 443, //change to your server port 
+      "uuid": "25e7a11b-9931-4b65-8f9c-24e736f237cb",
       "tls": {
         "enabled": true,
-        "server_name": "siemens.com",  
+        "server_name": "siemens.com", // target domain client must match with server setting 
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
         },
         "reality": {
           "enabled": true,
-          "public_key": "fTlf2tlB0GWoyxHC6AtNhOAKWWO8cVRMml-32LGcoBM", 
-          "short_id": "0ae63ceb" 
+          "public_key": "fTlf2tlB0GWoyxHC6AtNhOAKWWO8cVRMml-32LGcoBM", // change to public key of your account 
+          "short_id": "0ae63ceb" // change to short id of your account 
         }
       },
       "packet_encoding": "xudp",
@@ -158,16 +158,10 @@
     }
   ],
   "ntp": {
-    "enabled": true,
-    "server": "time.apple.com",
+    "enabled": false,
+    "server": "17.253.4.125",
     "server_port": 123,
     "interval": "30m",
     "detour": "direct"
-  },
-  "experimental": {
-    "clash_api": {
-      "external_controller": "127.0.0.1:9090",
-      "store_fakeip": true
-    }
   }
 }
