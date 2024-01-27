@@ -122,9 +122,9 @@
     {
       "tag": "proxy",
       "type": "vless",
-      "server": "172.93.144.139",
-      "server_port": 443, 
-      "uuid": "25e7a11b-9931-4b65-8f9c-24e736f237cb",
+      "server": "217.196.106.100",
+      "server_port": 2083, 
+      "uuid": "bff2dfdf-632c-499a-bece-b3d37eb63539",
       "tls": {
         "enabled": true,
         "server_name": "siemens.com", 
@@ -134,8 +134,8 @@
         },
         "reality": {
           "enabled": true,
-          "public_key": "fTlf2tlB0GWoyxHC6AtNhOAKWWO8cVRMml-32LGcoBM", 
-          "short_id": "0ae63ceb" 
+          "public_key": "qTazb7nMvOySwKdlhMmFvHpwm7D16h9Sy5uvEWCyrA4", 
+          "short_id": "672f4feb" 
         }
       },
       "packet_encoding": "xudp",
