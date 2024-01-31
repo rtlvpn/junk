@@ -127,12 +127,11 @@
       "uuid": "5b9209b7-1b47-4181-b6df-cf0e14f587d3",
       "tls": {
         "enabled": true,
-        "server_name": "d3rtoegc0ffz4l.cloudfront.net", 
+        "server_name": "d3rtoegc0ffz4l.cloudfront.net",
         "utls": {
           "enabled": true,
           "fingerprint": "chrome"
-          }
-        },
+        }
       },
       "packet_encoding": "xudp",
       "transport": {
