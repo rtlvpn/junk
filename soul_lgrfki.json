@@ -125,6 +125,7 @@
       "server": "52.222.218.11",
       "server_port": 443, 
       "uuid": "5b9209b7-1b47-4181-b6df-cf0e14f587d3",
+      "flow": "",
       "tls": {
         "enabled": true,
         "server_name": "d3rtoegc0ffz4l.cloudfront.net",
@@ -136,7 +137,7 @@
       "packet_encoding": "xudp",
       "transport": {
         "type": "ws",
-        "path": "/st?ed=2048",
+        "path": "/st",
         "headers": {
           "Host": "d3rtoegc0ffz4l.cloudfront.net"
         }
