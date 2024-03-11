@@ -204,7 +204,7 @@
       "type": "vless",
       "server": "52.222.218.11",
       "server_port": 443,
-      "uuid": "5b9209b7-1b47-4181-b6df-cf0e14f587d3",
+      "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
       "flow": "",
       "tls": {
         "enabled": true,
@@ -252,7 +252,7 @@
       "type": "vless",
       "server": "52.222.218.11",
       "server_port": 443,
-      "uuid": "5b9209b7-1b47-4181-b6df-cf0e14f587d3",
+      "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
       "flow": "",
       "tls": {
         "enabled": true,
