@@ -43,7 +43,6 @@
         "server": "dns_proxy"
       },
       {
-        "rule_set": "BlockHttpDNS",
         "rule_set": "geosite-category-ads-all",
         "domain_suffix": [
           ".mcdn.bilivideo.cn",
@@ -86,13 +85,7 @@
   },
   "route": {
     "rule_set": [
-      {
-        "tag": "BlockHttpDNS",
-        "type": "remote",
-        "format": "binary",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/bm7/BlockHttpDNS.srs",
-        "download_detour": "select"
-      },
+
       {
         "tag": "geosite-category-ads-all",
         "type": "remote",
