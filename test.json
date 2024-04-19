@@ -138,7 +138,7 @@
     ],
     "outbounds": [
     {
-      "tag": "rtl-euq🎲",
+      "tag": "proxy",
       "type": "vless",
       "server": "18.165.89.53",
       "server_port": 443,
