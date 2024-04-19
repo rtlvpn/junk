@@ -1,0 +1,288 @@
+{
+  "log": {
+    "level": "warn",
+    "timestamp": false
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns_proxy",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "select"
+      },
+      {
+        "tag": "dns_direct",
+        "address": "https://1.1.1.1/dns-query",
+        "address_resolver": "dns_resolver",
+        "strategy": "ipv4_only",
+        "detour": "select"
+      },
+      {
+        "tag": "dns_resolver",
+        "address": "1.1.1.1",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns_success",
+        "address": "rcode://success"
+      },
+      {
+        "tag": "dns_refused",
+        "address": "rcode://refused"
+      },
+      {
+        "tag": "dns_fakeip",
+        "address": "fakeip"
+      }
+    ],
+    "rules": [
+      {
+        "outbound": "any",
+        "server": "dns_proxy"
+      },
+      {
+        "rule_set": "BlockHttpDNS",
+        "rule_set": "geosite-category-ads-all",
+        "domain_suffix": [
+          ".mcdn.bilivideo.cn",
+          ".szbdyd.com"
+        ],
+        "domain_regex": [
+          "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+          "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+        ],
+        "server": "dns_success",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ],
+        "server": "dns_fakeip"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME"
+        ],
+        "invert": true,
+        "server": "dns_refused",
+        "disable_cache": true
+      }
+    ],
+    "final": "dns_proxy",
+    "independent_cache": true,
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    }
+  },
+  "route": {
+    "rule_set": [
+      {
+        "tag": "BlockHttpDNS",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-httpdns.srs",
+        "download_detour": "select"
+      },
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+        "download_detour": "select"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
+        "download_detour": "select"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "download_detour": "select"
+      }
+    ],
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "rule_set": "BlockHttpDNS",
+        "rule_set": "geosite-category-ads-all",
+        "domain_suffix": [
+          ".mcdn.bilivideo.cn",
+          ".szbdyd.com"
+        ],
+        "domain_regex": [
+          "cn-[a-zA-Z0-9-]+\\.bilivideo\\.com",
+          "[a-zA-Z0-9-]+-pcdn-[a-zA-Z0-9-]+\\.biliapi\\.net"
+        ],
+        "outbound": "block"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "select"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      }
+    ],
+    //"final": "proxy",
+    "auto_detect_interface": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "inet4_address": "172.16.0.1/30",
+      "inet6_address": "fd00::1/126",
+      "mtu": 1400,
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "gvisor",
+      "sniff": true,
+      "sniff_override_destination": false
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "select",
+      "type": "selector",
+      "outbounds": [
+        "h2-texas🧪",
+        "h2-texas2⚡️",
+        "rtl-euq🎲"
+
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "tag": "h2-texas🧪",
+      "type": "vless",
+      "server": "172.93.231.220",
+      "server_port": 443,
+      "uuid": "1d9dd066-e2c9-4537-bfa3-f3953ed3d8b2",
+      "tls": {
+        "enabled": true,
+        "server_name": "siemens.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "1gXBbWXz3iwpI6WhHVgxgZr47cv7kiR_rWnU2dq_RRw",
+          "short_id": "3a6a19a8"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "http"
+      }
+    },
+    {
+      "tag": "rtl-euq🎲",
+      "type": "vless",
+      "server": "18.165.89.53",
+      "server_port": 443,
+      "uuid": "01fcd324-883c-4343-ced8-5a26468e63c4",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "d3rtoegc0ffz4l.cloudfront.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/st",
+        "headers": {
+          "Host": "d3rtoegc0ffz4l.cloudfront.net"
+        }
+      }
+    },
+    {
+      "tag": "h2-texas2⚡️",
+      "type": "vless",
+      "server": "217.196.106.100",
+      "server_port": 2083,
+      "uuid": "bc21acdf-f231-42c7-8ca1-ae7744661ff7",
+      "tls": {
+        "enabled": true,
+        "server_name": "siemens.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "qTazb7nMvOySwKdlhMmFvHpwm7D16h9Sy5uvEWCyrA4",
+          "short_id": "672f4feb"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "http"
+      }
+    },
+    {
+      "tag": "socks-out",
+      "type": "socks",
+      "server": "172.93.231.220",
+      "server_port": 11782,
+      "version": "5",
+      "username": "Wdpr7PSJWi",
+      "password": "yew4Dwl43X",
+      "udp_over_tcp": false
+    },
+
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ],
+  "ntp": {
+    "enabled": true,
+    "server": "17.253.4.125",
+    "server_port": 123,
+    "interval": "30m",
+    "detour": "direct"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db",
+      "store_fakeip": false
+    }
+  }
+}
