@@ -170,9 +170,9 @@
     {
       "tag": "h2⚡️",
       "type": "vless",
-      "server": "172.93.144.139",
+      "server": "217.196.106.100",
       "server_port": 443,
-      "uuid": "9c6d93ec-7da5-4b08-9614-23904c9834d7",
+      "uuid": "d1ea03ec-5a9e-4702-a22a-5f269c46639a",
       "tls": {
         "enabled": true,
         "server_name": "siemens.com",
@@ -218,9 +218,9 @@
     {
       "tag": "h22⚡️",
       "type": "vless",
-      "server": "172.93.144.139",
-      "server_port": 443,
-      "uuid": "9c6d93ec-7da5-4b08-9614-23904c9834d7",
+      "server": "217.196.106.100",
+      "server_port": 2083,
+      "uuid": "d1ea03ec-5a9e-4702-a22a-5f269c46639a",
       "tls": {
         "enabled": true,
         "server_name": "siemens.com",
@@ -230,8 +230,8 @@
         },
         "reality": {
           "enabled": true,
-          "public_key": "fTlf2tlB0GWoyxHC6AtNhOAKWWO8cVRMml-32LGcoBM",
-          "short_id": "0ae63ceb"
+          "public_key": "qTazb7nMvOySwKdlhMmFvHpwm7D16h9Sy5uvEWCyrA4",
+          "short_id": "672f4feb"
         }
       },
       "packet_encoding": "xudp",
