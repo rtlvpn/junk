@@ -211,7 +211,7 @@
         "type": "ws",
         "path": "/st",
         "max_early_data": 0,
-        "early_data_header_name": "Sec-WebSocket-Protocol"
+        "early_data_header_name": "Sec-WebSocket-Protocol",
         "headers": {
           "Host": "d3rtoegc0ffz4l.cloudfront.net"
         }
