@@ -194,7 +194,7 @@
         {
       "tag": "rtleu⚡️",
       "type": "vless",
-      "server": "65.9.149.12",
+      "server": "54.230.209.151",
       "server_port": 443,
       "uuid": "984c9278-beee-483c-bab1-3ee9b2725bb2",
       "flow": "",
@@ -210,7 +210,6 @@
       "transport": {
         "type": "ws",
         "path": "/st",
-        "max_early_data": 2048,
         "headers": {
           "Host": "d3rtoegc0ffz4l.cloudfront.net"
         }
