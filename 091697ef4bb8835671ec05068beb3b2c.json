@@ -162,8 +162,9 @@
             "type": "selector",
             "outbounds": [
                 "rtleu⚡️",
-                "h22⚡️",
-                "rtlaw⚡️"
+                "rtlaw⚡️",
+                "rtleu⛽",
+                "h22⚡️"
             ],
             "interrupt_exist_connections": true
     },
@@ -216,6 +217,30 @@
       }
     },
     {
+      "tag": "rtleu⛽",
+      "type": "vless",
+      "server": "216.137.38.70",
+      "server_port": 443,
+      "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
+      "flow": "",
+      "tls": {
+        "enabled": true,
+        "server_name": "d3rtoegc0ffz4l.cloudfront.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "packet_encoding": "xudp",
+      "transport": {
+        "type": "ws",
+        "path": "/st",
+        "headers": {
+          "Host": "d3rtoegc0ffz4l.cloudfront.net"
+        }
+      }
+    },
+    {
       "tag": "h22⚡️",
       "type": "vless",
       "server": "217.196.106.100",
@@ -242,7 +267,7 @@
             {
       "tag": "rtlaw⚡️",
       "type": "vless",
-      "server": "52.222.218.11",
+      "server": "54.230.216.198",
       "server_port": 443,
       "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
       "flow": "",
