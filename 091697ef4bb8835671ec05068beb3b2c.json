@@ -162,11 +162,7 @@
             "type": "selector",
             "outbounds": [
                 "rtleu🛢",
-                "rtleu🧪",
-                "rtlaw⚡️",
-                "rtleu⛽",
-                "h22⚡️",
-                "rtleu🎫"
+                "h22⚡️"
             ],
             "interrupt_exist_connections": true
     },
