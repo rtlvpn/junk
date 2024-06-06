@@ -162,6 +162,9 @@
             "type": "selector",
             "outbounds": [
                 "rtleu🛢",
+                "rtleu🧪",
+                "rtleu🛢",
+                "rtleu🎫",
                 "h22⚡️"
             ],
             "interrupt_exist_connections": true
@@ -193,7 +196,7 @@
         {
       "tag": "rtleu🧪",
       "type": "vless",
-      "server": "54.230.210.171",
+      "server": "108.138.199.60",
       "server_port": 443,
       "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
       "flow": "",
@@ -217,7 +220,7 @@
     {
       "tag": "rtleu🛢",
       "type": "vless",
-      "server": "108.138.7.76",
+      "server": "108.156.60.12",
       "server_port": 443,
       "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
       "flow": "",
@@ -241,7 +244,7 @@
        {
       "tag": "rtleu🎫",
       "type": "vless",
-      "server": "18.64.77.111",
+      "server": "18.164.52.29",
       "server_port": 443,
       "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
       "flow": "",
