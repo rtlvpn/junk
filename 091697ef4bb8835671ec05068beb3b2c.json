@@ -161,10 +161,7 @@
             "tag": "select",
             "type": "selector",
             "outbounds": [
-                "rtleu🛢",
-                "rtleu🧪",
-                "rtleu⛽",
-                "rtleu🎫",
+                "q2-texas2⚡️",
                 "h22⚡️"
             ],
             "interrupt_exist_connections": true
@@ -192,6 +189,31 @@
       "transport": {
         "type": "http"
       }
+    },
+    {
+      "tag": "q2-texas2⚡️",
+      "type": "tuic",
+      "server": "80.85.241.242",
+      "server_port": 8443,
+      "uuid": "ee295d99-c32f-4e29-914a-e038cbe6877d",
+      "password": "p2uhd+qw?5",
+      "congestion_control": "bbr",
+      "zero_rtt_handshake":true,
+      "udp_relay_mode": "quic",
+      "udp_fragment": true,
+      "tls": {
+          "enabled": true,
+          "ech": {
+            "enabled": true,
+            "pq_signature_schemes_enabled": true,
+            "dynamic_record_sizing_disabled": false
+          },
+              "server_name": "cache1-bom1.steamcontent.link",
+              "alpn": [
+                  "h3"
+              ]
+        }
+
     },
         {
       "tag": "rtleu🧪",
