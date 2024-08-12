@@ -208,7 +208,7 @@
             "pq_signature_schemes_enabled": true,
             "dynamic_record_sizing_disabled": false
           },
-              "server_name": "cache1-bom1.steamcontent.link",
+              "server_name": "cacheord9.ghosi.farm",
               "alpn": [
                   "h3"
               ]
