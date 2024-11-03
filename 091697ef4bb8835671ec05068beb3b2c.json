@@ -161,8 +161,8 @@
             "tag": "select",
             "type": "selector",
             "outbounds": [
-                "q2-texas2⚡️",
-                "h22⚡️"
+                "h22⚡️",
+                "q2-texas2⚡️"
             ],
             "interrupt_exist_connections": true
     },
