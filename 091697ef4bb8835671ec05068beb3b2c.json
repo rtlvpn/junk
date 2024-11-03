@@ -193,10 +193,10 @@
     {
       "tag": "q2-texas2⚡️",
       "type": "tuic",
-      "server": "80.85.241.242",
+      "server": "217.196.106.100",
       "server_port": 8443,
-      "uuid": "c094ca4c-4d22-4119-b953-e7af8cc54b7d",
-      "password": "Yn0v4TGmAs",
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
       "congestion_control": "bbr",
       "zero_rtt_handshake":true,
       "udp_relay_mode": "quic",
@@ -208,7 +208,7 @@
             "pq_signature_schemes_enabled": true,
             "dynamic_record_sizing_disabled": false
           },
-              "server_name": "cacheord9.ghosi.farm",
+              "server_name": "wintermute.rattleprotocol.store",
               "alpn": [
                   "h3"
               ]
