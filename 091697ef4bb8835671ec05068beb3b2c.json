@@ -192,7 +192,7 @@
     {
       "tag": "q2-texas2⚡️",
       "type": "tuic",
-      "server": "217.196.106.100",
+      "server": "91.184.240.55",
       "server_port": 8443,
       "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
       "password": "3PWge6B58l",
@@ -312,7 +312,7 @@
     {
       "tag": "h22⚡️",
       "type": "vless",
-      "server": "217.196.106.100",
+      "server": "91.184.240.55",
       "server_port": 2083,
       "uuid": "d1ea03ec-5a9e-4702-a22a-5f269c46639a",
       "tls": {
