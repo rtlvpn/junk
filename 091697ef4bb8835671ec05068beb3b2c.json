@@ -90,21 +90,21 @@
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
-        "download_detour": "direct"
+        "download_detour": "select"
       },
       {
         "tag": "geosite-geolocation-!cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-geolocation-!cn.srs",
-        "download_detour": "direct"
+        "download_detour": "select"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
         "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
-        "download_detour": "direct"
+        "download_detour": "select"
       }
     ],
     "rules": [
@@ -145,10 +145,8 @@
     {
       "type": "tun",
       "tag": "tun-in",
-      "address": [
-        "172.19.0.1/30",
-        "fd00::1/126"
-      ],
+      "inet4_address": "172.16.0.1/30",
+      "inet6_address": "fd00::1/126",
       "mtu": 1400,
       "auto_route": true,
       "strict_route": true,
@@ -162,8 +160,8 @@
             "tag": "select",
             "type": "selector",
             "outbounds": [
-                "q2-texas2⚡️",
-                "h22⚡️"
+                "h22⚡️",
+                "q2-texas2⚡️"
             ],
             "interrupt_exist_connections": true
     },
@@ -194,10 +192,10 @@
     {
       "tag": "q2-texas2⚡️",
       "type": "tuic",
-      "server": "92.112.127.215",
+      "server": "91.184.240.55",
       "server_port": 8443,
-      "uuid": "7867b500-d38f-4115-939b-00032ecfc666",
-      "password": "bv4QMJLVvQ",
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
       "congestion_control": "bbr",
       "zero_rtt_handshake":true,
       "udp_relay_mode": "quic",
@@ -205,11 +203,11 @@
       "tls": {
           "enabled": true,
           "ech": {
-            "enabled": false,
+            "enabled": true,
             "pq_signature_schemes_enabled": true,
             "dynamic_record_sizing_disabled": false
           },
-              "server_name": "heatmapeldritch.gleeze.com",
+              "server_name": "wintermute.rattleprotocol.store",
               "alpn": [
                   "h3"
               ]
