@@ -202,6 +202,7 @@
       "udp_fragment": true,
       "tls": {
           "enabled": true,
+          "insecure": true,
           "ech": {
             "enabled": true,
             "pq_signature_schemes_enabled": true,
