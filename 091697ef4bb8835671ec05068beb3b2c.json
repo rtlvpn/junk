@@ -190,30 +190,23 @@
       }
     },
     {
-      "tag": "q2-texas2⚡️",
-      "type": "tuic",
-      "server": "91.184.240.55",
-      "server_port": 8443,
-      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
-      "password": "3PWge6B58l",
-      "congestion_control": "bbr",
-      "zero_rtt_handshake":true,
-      "udp_relay_mode": "quic",
-      "udp_fragment": true,
-      "tls": {
-          "enabled": true,
-          "insecure": true,
-          "ech": {
-            "enabled": true,
-            "pq_signature_schemes_enabled": true,
-            "dynamic_record_sizing_disabled": false
-          },
-              "server_name": "wintermute.rattleprotocol.store",
-              "alpn": [
-                  "h3"
-              ]
-        }
-    },
+        "alter_id": 0,
+        "security": "auto",
+        "server": "185.124.175.69",
+        "server_port": 6020,
+        "tag": "q2-texas2⚡️",
+        "tls": {
+            "enabled": false,
+            "server_name": "sourfours-6c2fc7751b-s4.apps.ir-central1.arvancaas.ir"
+        },
+        "transport": {
+            "host": "avidmehregan.com",
+            "path": "/",
+            "type": "http"
+        },
+        "type": "vmess",
+        "uuid": "1876e283-8ea9-4220-a08c-7946e37e21dc"
+      },
         {
       "tag": "rtleu🧪",
       "type": "vless",
