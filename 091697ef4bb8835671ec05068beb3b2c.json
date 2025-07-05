@@ -160,6 +160,7 @@
             "tag": "select",
             "type": "selector",
             "outbounds": [
+                "amulet🧃",
                 "q2-texas2⚡️",
                 "h22⚡️"
             ],
@@ -215,7 +216,7 @@
         }
     },
     {
-      "tag": "proxy",
+      "tag": "amulet🧃",
       "type": "hysteria2",
       "server": "91.184.240.55",
       "server_port": 27050,
