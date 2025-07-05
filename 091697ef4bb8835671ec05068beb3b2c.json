@@ -214,28 +214,28 @@
               ]
         }
     },
-        {
-      "tag": "rtleu🧪",
-      "type": "vless",
-      "server": "108.138.199.60",
-      "server_port": 443,
-      "uuid": "d1810e33-91c0-4123-b2a2-b58d3f03f59a",
-      "flow": "",
-      "tls": {
-        "enabled": true,
-        "server_name": "d3rtoegc0ffz4l.cloudfront.net",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "chrome"
-        }
+    {
+      "tag": "proxy",
+      "type": "hysteria2",
+      "server": "91.184.240.55",
+      "server_port": 27050,
+      "password": "gg0eAQjXUa",
+      "obfs": {
+        "type": "salamander",
+        "password": "nero"
       },
-      "packet_encoding": "xudp",
-      "transport": {
-        "type": "ws",
-        "path": "/st",
-        "headers": {
-          "Host": "d3rtoegc0ffz4l.cloudfront.net"
-        }
+      "tls": {
+          "enabled": true,
+          "insecure": true,
+          "ech": {
+            "enabled": false,
+            "pq_signature_schemes_enabled": true,
+            "dynamic_record_sizing_disabled": false
+          },
+              "server_name": "wintermute.rattleprotocol.store",
+              "alpn": [
+                  "h3"
+              ]
       }
     },
     {
