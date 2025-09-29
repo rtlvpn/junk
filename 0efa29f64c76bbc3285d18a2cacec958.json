@@ -58,8 +58,15 @@
     ],
     "rules": [
       {
-        "invert": true,
-        "query_type": ["A", "AAAA", "CNAME", "SRV", "TXT"],
+        "rule_set": "geosite-ir",
+        "invert":true,
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME",
+          "SRV",
+          "TXT"
+        ],
         "server": "dns_fakeip"
       },
       {
@@ -124,10 +131,6 @@
       }
     ],
     "rules": [
-      // {
-      //   "protocol": "dns",
-      //   "action": "hijack-dns"
-      // },
       {
         "rule_set": "geosite-category-ads-all",
         "action": "reject"
@@ -165,6 +168,10 @@
       {
         "ip_is_private": true,
         "outbound": "direct"
+      },
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
       }
     ],
     "final": "select",
