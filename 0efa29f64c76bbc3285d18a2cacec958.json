@@ -58,7 +58,6 @@
     ],
     "rules": [
       {
-        "rule_set": "geosite-ir",
         "invert": true,
         "query_type": ["A", "AAAA", "CNAME", "SRV", "TXT"],
         "server": "dns_fakeip"
