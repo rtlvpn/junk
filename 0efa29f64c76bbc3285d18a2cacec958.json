@@ -40,6 +40,15 @@
             "47.90.173.78",
             "47.90.209.144"
           ],
+           "udp.ap-northeast-1.clawcloudrun.com": [
+            "47.79.144.155",
+            "47.79.144.214",
+            "47.79.145.132",
+            "47.79.37.186",
+            "47.79.87.5",
+            "47.79.93.100",
+            "47.79.95.174"
+          ],
           "passport.twitch.tv": [
             "18.245.187.125",
             "18.245.187.75"
@@ -133,7 +142,8 @@
         "TN-Wintermute 🏂",
         "TN-Wintermute 🎛",
         "TN-Wintermute 🎿",
-        "TN-Wintermute 🏜"
+        "TN-Wintermute 🏜",
+        "Tokyo 🌊",
       ],
       "default": "TN-Wintermute 🎛"
     },
@@ -144,6 +154,36 @@
       "domain_resolver": "hosts",
       "server": "udp.us-west-1.clawcloudrun.com",
       "server_port": 35553,
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "quic",
+      "heartbeat": "5s",
+      "send_fake_packets": true,
+      "fake_packet_duration": "3s",
+      "fake_heartbeat_data": "AQEGABI0VngAAAAAAAAAAAAAAAA=",
+      "fake_game_data": "AgEGAIdlQyEAAAAAwKgBZMCoAQHAqAH+",
+      "ip_detection_resolver": "ns1.google.com",
+      "ip_detection_domain": "o-o.myaddr.l.google.com",
+      "notification_resolver": "1.1.1.1",
+      "notification_domain": "bashbomb-%s-%d.t.godping.news",
+      "tls": {
+        "enabled": true,
+        "server_name": "wintermute.rattleprotocol.store",
+        "insecure": true,
+        "alpn": "h3",
+        "ech": {
+          "pq_signature_schemes_enabled": true
+        }
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "Tokyo 🌊",
+      "udp_fragment": true,
+      "domain_resolver": "hosts",
+      "server": "udp.ap-northeast-1.clawcloudrun.com",
+      "server_port": 30745,
       "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
       "password": "3PWge6B58l",
       "congestion_control": "bbr",
