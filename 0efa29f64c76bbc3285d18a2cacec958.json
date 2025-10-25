@@ -75,8 +75,7 @@
       {
         "query_type": [
           "A",
-          "AAAA",
-          "CNAME"
+          "AAAA"
         ],
         "server": "dns_fakeip"
       },
