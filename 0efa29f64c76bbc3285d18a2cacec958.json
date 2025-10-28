@@ -81,7 +81,7 @@
       },
        {
         "query_type": [
-          "TXT",
+          "TXT"
         ],
         "server": "dns_resolver"
       },
