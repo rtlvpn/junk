@@ -79,6 +79,12 @@
         ],
         "server": "dns_fakeip"
       },
+       {
+        "query_type": [
+          "TXT",
+        ],
+        "server": "dns_resolver"
+      },
       {
         "rule_set": "geosite-ir",
         "invert": true,
