@@ -1,0 +1,395 @@
+{
+  "log": {
+    "level": "error"
+  },
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "dns_proxy",
+        "detour": "select",
+        "domain_resolver": "dns_resolver",
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "https",
+        "tag": "dns_direct",
+        "domain_resolver": "dns_resolver",
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "hosts",
+        "tag": "hosts",
+        "predefined": {
+          "udp.us-west-1.clawcloudrun.com": [
+            "47.251.140.189",
+            "47.251.100.87",
+            "47.251.173.154",
+            "47.254.29.108",
+            "47.251.75.139",
+            "47.88.0.55",
+            "47.251.121.199",
+            "47.88.24.89",
+            "47.251.173.75",
+            "47.251.104.97"
+          ],
+          "udp.us-east-1.clawcloudrun.com": [
+            "47.253.35.19",
+            "47.89.135.118",
+            "47.89.186.110",
+            "47.90.173.78",
+            "47.90.209.144"
+          ],
+           "udp.ap-northeast-1.clawcloudrun.com": [
+            "47.79.144.155",
+            "47.79.144.214",
+            "47.79.145.132",
+            "47.79.37.186",
+            "47.79.87.5",
+            "47.79.93.100",
+            "47.79.95.174"
+          ],
+          "passport.twitch.tv": [
+            "18.245.187.125",
+            "18.245.187.75"
+          ],
+          "usher.ttvnw.net": [
+            "18.245.162.46",
+            "18.245.162.116"
+          ]
+        }
+      },
+      {
+        "type": "udp",
+        "tag": "dns_resolver",
+        "server": "1.1.1.1"
+      },
+      {
+        "type": "fakeip",
+        "tag": "dns_fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "dns_fakeip"
+      },
+       {
+        "query_type": [
+          "TXT"
+        ],
+        "server": "dns_resolver"
+      },
+      {
+        "rule_set": "geosite-ir",
+        "invert": true,
+        "server": "dns_fakeip"
+      },
+      {
+        "domain_suffix": [
+          "usher.ttvnw.net",
+          "playlist.ttvnw.net"
+        ],
+        "server": "dns_proxy"
+      },
+      {
+        "rule_set": "geosite-ir",
+        "server": "dns_resolver"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA",
+          "CNAME",
+          "SRV",
+          "TXT"
+        ],
+        "invert": true,
+        "action": "predefined",
+        "rcode": "REFUSED"
+      }
+    ],
+    "final": "dns_proxy",
+    "strategy": "ipv4_only",
+    "independent_cache": true
+  },
+  "ntp": {
+    "enabled": true,
+    "interval": "30m0s",
+    "server": "17.253.4.125",
+    "server_port": 123
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "mtu": 1490,
+      "address": [
+        "172.16.0.1/30",
+        "fd00::1/126"
+      ],
+      "auto_route": true,
+      "strict_route": true,
+      "stack": "gvisor",
+      "sniff": true
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "TN-Wintermute 🏂",
+        "TN-Wintermute 🎛",
+        "TN-Wintermute 🎿",
+        "TN-Wintermute 🏜",
+        "Tokyo 🌊"
+      ],
+      "default": "TN-Wintermute 🎛"
+    },
+    {
+      "type": "tuic",
+      "tag": "TN-Wintermute 🎛",
+      "udp_fragment": true,
+      "domain_resolver": "hosts",
+      "server": "udp.us-west-1.clawcloudrun.com",
+      "server_port": 35553,
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "quic",
+      "heartbeat": "5s",
+      "send_fake_packets": true,
+      "fake_packet_duration": "3s",
+      "fake_heartbeat_data": "AQEGABI0VngAAAAAAAAAAAAAAAA=",
+      "fake_game_data": "AgEGAIdlQyEAAAAAwKgBZMCoAQHAqAH+",
+      "ip_detection_resolver": "ns1.google.com",
+      "ip_detection_domain": "o-o.myaddr.l.google.com",
+      "notification_resolver": "1.1.1.1",
+      "notification_domain": "bashbomb-%s-%d.t.godping.news",
+      "tls": {
+        "enabled": true,
+        "server_name": "wintermute.rattleprotocol.store",
+        "insecure": true,
+        "alpn": "h3",
+        "ech": {
+          "pq_signature_schemes_enabled": true
+        }
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "Tokyo 🌊",
+      "udp_fragment": true,
+      "domain_resolver": "hosts",
+      "server": "udp.ap-northeast-1.clawcloudrun.com",
+      "server_port": 30745,
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "quic",
+      "heartbeat": "5s",
+      "send_fake_packets": true,
+      "fake_packet_duration": "3s",
+      "fake_heartbeat_data": "AQEGABI0VngAAAAAAAAAAAAAAAA=",
+      "fake_game_data": "AgEGAIdlQyEAAAAAwKgBZMCoAQHAqAH+",
+      "ip_detection_resolver": "ns1.google.com",
+      "ip_detection_domain": "o-o.myaddr.l.google.com",
+      "notification_resolver": "1.1.1.1",
+      "notification_domain": "bashbomb-%s-%d.t.godping.news",
+      "tls": {
+        "enabled": true,
+        "server_name": "wintermute.rattleprotocol.store",
+        "insecure": true,
+        "alpn": "h3",
+        "ech": {
+          "pq_signature_schemes_enabled": true
+        }
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "TN-Wintermute 🏂",
+"udp_fragment": true,
+      "server": "92.112.127.215",
+      "server_port": 34964,
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
+      "congestion_control": "brutal",
+      "udp_relay_mode": "quic",
+      "heartbeat": "5s",
+      "send_fake_packets": true,
+      "fake_packet_duration": "7s",
+      "fake_heartbeat_data": "AQEGABI0VngAAAAAAAAAAAAAAAA=",
+      "fake_game_data": "AgEGAIdlQyEAAAAAwKgBZMCoAQHAqAH+",
+      "ip_detection_resolver": "ns1.google.com",
+      "ip_detection_domain": "o-o.myaddr.l.google.com",
+      "notification_resolver": "1.1.1.1",
+      "notification_domain": "bashbomb-%s-%d.t.godping.news",
+      "tls": {
+        "enabled": true,
+        "server_name": "wintermute.rattleprotocol.store",
+        "insecure": true,
+        "alpn": "h3",
+        "ech": {
+          "pq_signature_schemes_enabled": true
+        }
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "TN-Wintermute 🎿",
+      "udp_fragment": true,
+      "server": "92.112.127.215",
+      "server_port": 27015,
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "quic",
+      "heartbeat": "5s",
+      "send_fake_packets": true,
+      "fake_packet_duration": "7s",
+      "fake_heartbeat_data": "AQEGABI0VngAAAAAAAAAAAAAAAA=",
+      "fake_game_data": "AgEGAIdlQyEAAAAAwKgBZMCoAQHAqAH+",
+      "ip_detection_resolver": "ns1.google.com",
+      "ip_detection_domain": "o-o.myaddr.l.google.com",
+      "notification_resolver": "1.1.1.1",
+      "notification_domain": "bashbomb-%s-%d.t.godping.news",
+      "tls": {
+        "enabled": true,
+        "server_name": "wintermute.rattleprotocol.store",
+        "insecure": true,
+        "alpn": "h3",
+        "ech": {
+          "pq_signature_schemes_enabled": true
+        }
+      }
+    },
+    {
+      "type": "tuic",
+      "tag": "TN-Wintermute 🏜",
+      "udp_fragment": true,
+      "domain_resolver": "hosts",
+      "server": "udp.us-east-1.clawcloudrun.com",
+      "server_port": 40144,
+      "uuid": "a06483bc-d0af-4d51-aefb-d9bf7f899ea8",
+      "password": "3PWge6B58l",
+      "congestion_control": "bbr",
+      "udp_relay_mode": "quic",
+      "heartbeat": "5s",
+      "send_fake_packets": true,
+      "fake_packet_duration": "3s",
+      "fake_heartbeat_data": "AQEGABI0VngAAAAAAAAAAAAAAAA=",
+      "fake_game_data": "AgEGAIdlQyEAAAAAwKgBZMCoAQHAqAH+",
+      "ip_detection_resolver": "ns1.google.com",
+      "ip_detection_domain": "o-o.myaddr.l.google.com",
+      "notification_resolver": "1.1.1.1",
+      "notification_domain": "bashbomb-%s-%d.t.godping.news",
+      "tls": {
+        "enabled": true,
+        "server_name": "wintermute.rattleprotocol.store",
+        "insecure": true,
+        "alpn": "h3",
+        "ech": {
+          "pq_signature_schemes_enabled": true
+        }
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "protocol": "dns",
+        "action": "hijack-dns"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "action": "reject"
+      },
+      {
+        "rule_set": "geosite-ir",
+        "outbound": "direct"
+      },
+      {
+        "domain": [
+          "passport.twitch.tv"
+        ],
+        "action": "route",
+         "tls_record_fragment": true,
+        "tls_fragment": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-ir",
+        "invert": true,
+        "outbound": "select"
+      },
+      {
+        "domain": "download.todesktop.com",
+        "action": "reject"
+      },
+      {
+        "rule_set": "block-httpdns",
+        "action": "reject"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geosite-category-ads-all",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-category-ads-all.srs",
+"download_detour": "direct"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-ir",
+        "url": "https://raw.githubusercontent.com/Chocolate4U/Iran-sing-box-rules/rule-set/geosite-ir.srs",
+        "download_detour": "direct"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-geolocation-!cn",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "type": "remote",
+        "tag": "block-httpdns",
+        "url": "https://raw.githubusercontent.com/DDCHlsq/sing-ruleset/ruleset/httpdns.srs",
+        "download_detour": "direct"
+      }
+    ],
+    "final": "select",
+    "auto_detect_interface": true,
+    "default_domain_resolver": "dns_proxy"
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "cache.db"
+    }
+  }
+}
