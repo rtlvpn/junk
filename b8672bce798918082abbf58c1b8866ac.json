@@ -148,9 +148,8 @@
         "NeuralConduit",
         "Tokyo 🌊"
       ],
-      "default": "TN-Wintermute 🎛"
+      "default": "NeuralConduit"
     },
-   "outbounds": [
     {
       "type": "dnstt",
       "tag": "NeuralConduit",
