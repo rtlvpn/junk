@@ -217,14 +217,6 @@
     "interval": "30m"
   },
   "experimental": {
-    "v2ray_api": {
-      "listen": "127.0.0.1:8080",
-      "stats": {
-        "enabled": true,
-        "inbounds": ["mixed-in", "tun-in"],
-        "outbounds": ["direct", "proxy"]
-      }
-    },
     "cache_file": {
       "enabled": true,
       "path": "cache.db",
