@@ -144,13 +144,14 @@
       "type": "selector",
       "tag": "select",
       "outbounds": [
+        "any🥽",
         "TN-Wintermute 🏂",
         "TN-Wintermute 🎛",
         "TN-Wintermute 🎿",
         "TN-Wintermute 🏜",
         "Tokyo 🌊"
       ],
-      "default": "TN-Wintermute 🎛"
+      "default": "any🥽"
     },
     {
       "type": "tuic",
@@ -239,6 +240,24 @@
         "ech": {
           "pq_signature_schemes_enabled": true
         }
+      }
+    },
+    {
+      "tag": "any🥽",
+      "type": "anytls",
+      "server": "92.112.127.215",
+      "server_port": 2087,
+      "idle_session_check_interval": "10s",
+      "idle_session_timeout": "30s",
+      "min_idle_session": 5,
+      "password": "your-password-here",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "wintermute.siemens.com",
+        "alpn": [
+          "h2"
+        ]
       }
     },
     {
