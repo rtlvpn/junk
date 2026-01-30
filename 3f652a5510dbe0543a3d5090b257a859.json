@@ -33,6 +33,29 @@
             "47.251.173.75",
             "47.251.104.97"
           ],
+           "tcp.us-west-1.clawcloudrun.com": [
+              "47.88.0.55",
+              "47.251.129.255",
+              "47.254.29.108",
+              "47.251.104.97",
+              "47.251.100.87",
+              "47.88.24.89",
+              "47.251.173.75",
+              "47.251.129.100",
+              "47.251.121.199",
+              "47.251.173.154",
+              "47.251.140.189",
+              "47.251.75.139"
+          ],
+          "tcp.ap-northeast-1.clawcloudrun.com": [
+            "47.79.87.5",
+            "47.79.144.214",
+            "47.79.144.155",
+            "47.79.145.132",
+            "47.79.37.186",
+            "47.79.93.100",
+            "47.79.95.174"
+          ],
           "udp.us-east-1.clawcloudrun.com": [
             "47.253.35.19",
             "47.89.135.118",
@@ -145,6 +168,8 @@
       "tag": "select",
       "outbounds": [
         "any🥽",
+        "ausw🦅",
+        "ajp🌊",
         "TN-Wintermute 🏂",
         "TN-Wintermute 🎛",
         "TN-Wintermute 🎿",
@@ -287,6 +312,44 @@
         "ech": {
           "pq_signature_schemes_enabled": true
         }
+      }
+    },
+    {
+      "tag": "ausw🦅",
+      "type": "anytls",
+      "server": "tcp.us-west-1.clawcloudrun.com",
+      "server_port": 36593,
+      "idle_session_check_interval": "10s",
+      "idle_session_timeout": "30s",
+      "min_idle_session": 10,
+      "domain_resolver": "hosts",
+      "password": "yYwVYENBg3",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hybrid.siemens.com",
+        "alpn": [
+          "h2"
+        ]
+      }
+    },
+    {
+      "tag": "ajp🌊",
+      "type": "anytls",
+      "server": "tcp.ap-northeast-1.clawcloudrun.com",
+      "server_port": 31589,
+      "idle_session_check_interval": "10s",
+      "idle_session_timeout": "30s",
+      "min_idle_session": 2,
+      "domain_resolver": "hosts",
+      "password": "ygsnzzK7v0",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hybrid.siemens.com",
+        "alpn": [
+          "h2"
+        ]
       }
     },
     {
