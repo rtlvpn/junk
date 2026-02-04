@@ -33,6 +33,15 @@
             "47.251.173.75",
             "47.251.104.97"
           ],
+           "tcp.us-east-1.clawcloudrun.com": [
+              "47.253.104.135",
+              "47.253.35.19",
+              "47.90.209.144",
+              "47.89.186.110",
+              "47.89.135.118",
+              "47.89.135.118",
+              "47.90.173.78"
+          ],
            "tcp.us-west-1.clawcloudrun.com": [
               "47.88.0.55",
               "47.251.129.255",
@@ -169,6 +178,7 @@
       "outbounds": [
         "any🥽",
         "ausw🦅",
+        "ause⛰️",
         "ajp🌊",
         "TN-Wintermute 🏂",
         "TN-Wintermute 🎛",
@@ -176,7 +186,7 @@
         "TN-Wintermute 🏜",
         "Tokyo 🌊"
       ],
-      "default": "any🥽"
+      "default": "ausw🦅"
     },
     {
       "type": "tuic",
@@ -319,6 +329,25 @@
       "type": "anytls",
       "server": "tcp.us-west-1.clawcloudrun.com",
       "server_port": 36593,
+      "idle_session_check_interval": "10s",
+      "idle_session_timeout": "30s",
+      "min_idle_session": 10,
+      "domain_resolver": "hosts",
+      "password": "yYwVYENBg3",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hybrid.siemens.com",
+        "alpn": [
+          "h2"
+        ]
+      }
+    },
+      {
+      "tag": "ause⛰️",
+      "type": "anytls",
+      "server": "tcp.us-east-1.clawcloudrun.com",
+      "server_port": 44555,
       "idle_session_check_interval": "10s",
       "idle_session_timeout": "30s",
       "min_idle_session": 10,
